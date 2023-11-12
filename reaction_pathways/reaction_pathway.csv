@@ -1,0 +1,52 @@
+name,formula_change,mass_change,reaction_pathway,category
+C6H5,(-C6H5+H),-76.0313,loss of phenyl,reaction
+C4H6O,(-C4H6O),-70.0419,loss of butyryl,reaction
+C4H4O,(-C4H4O),-68.0262,loss of crotonyl,reaction
+CF3,(-CF3+H),-67.9874,loss of trifluoromethyl,reaction
+C2H3O2,(-C2H2O2),-58.0055,loss of acetic acid,reaction
+C2H3NO,(-C2H3NO),-57.0215,loss of glycine,reaction
+C3H4O,(-C3H4O),-56.0262,loss of propionyl,reaction
+HO3S,(SO3H -> SH),-47.9847,Sulfonic acid to Thiol,reaction
+NO2,(-NO2+H),-44.9851,loss of nitro,reaction
+CO2,(-CO2),-43.9898,loss of CO2,reaction
+C2H2O,(-C2H2O),-42.0106,Deacetylation,reaction
+Cl,(-Cl+H),-33.961,dechlorination,reaction
+CH2O,(-C1H2O1),-30.0106,lose_CH2O,reaction
+NO2,(NO2 -> NH2),-29.9742,denitrification,reaction
+C2H4,(-C2H4),-28.0313,loss of C2H4,reaction
+CO,(-CO),-27.9949,loss of CO,reaction
+H2O,(-H2O),-18.0106,loss of water,reaction
+F,(-F+H),-17.9906,defluorination,reaction
+H3N,(-NH3),-17.0265,loss of ammonia,reaction
+O,(-O),-15.9949,loss of oxygen,reaction
+HN,(-NH),-15.0109,loss of NH,reaction
+CH2,(-CH2),-14.0157,demethylation,reaction
+H2,(-H2),-2.0157,dehydrogenation,"reaction, biotransformation"
+H,(-H),-1.0078,radical,radical
+O-HN,(+O1-NH),0.984,Deamination,biotransform
+NH3-O,(+N1H3-O),1.0316,Transamination,biotransform
+H2,(+H2),2.0157,hydrogenation,reaction
+CH2,(+CH2),14.0157,methylation,"reaction, biotransformationt"
+NH,(+NH),15.0109,addition of NH(Amination),"reaction, biotransformation"
+O,(+O),15.9949,oxidation,"reaction, biotransformation"
+NH3,(+NH3),17.0265,addition of NH3,"reaction, biotransformation"
+FH-1,(+F-H),17.9906,fluorination,reaction
+H2O,(+H2O),18.0106,addition of water,"reaction, biotransformation"
+CO,(+CO),27.9949,addition of CO,"reaction, biotransformation"
+C2H4,(+C2H4),28.0313,"addition of C2H4, beta oxidation",reaction
+H-2O2,(NH2 -> NO2),29.9742,nitrification,reaction
+CH2O,(+C1H2O1),30.0106,Deamination,biotransform
+ClH-1,(+Cl-H),33.961,chlorination,reaction
+C2H2O,(+C2H2O),42.0106,acetylation,"reaction, biotransformation"
+CO2,(+CO2),43.9898,"addition of CO2, carboxylation","reaction, biotransformation"
+NO2H-1,(+NO2-H),44.9851,addition of nitro,reaction
+C3H4O,(+C3H4O),56.0262,propionylation,reaction
+C2H3NO,(+C2H3NO),57.0215,glycine conjugation,reaction
+C2H2O2,(+C2H2O2),58.0055,addition of acetic acid,reaction
+C4H4O,(+C4H4O),68.0262,crotonylation,reaction
+C5H8,(+C5H8),68.0626,Isoprenylation,biotransform
+C4H6O,(+C4H6O),70.0419,butyrylation,reaction
+C6H4,(+C6H5-H),76.0313,addition of phenyl,reaction
+SO3,(+SO3),79.9568,sulfate conjugation,"reaction, biotransformation"
+HPO3,(+HPO3),79.9663,addition of Phosphate,"reaction, biotransformation"
+nCl,,0,,reaction
