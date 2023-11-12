@@ -11,7 +11,7 @@ multi_model_file <- "C:/Users/User/Tingting/2022-11-03-Cl_project/ChloroDBP Hunt
 mzmldir <- "C:/Users/User/Desktop/testmzML"
 
 # specify the format of the raw lcms data
-lcmspattern <- ".mzML" # String: ".mzML" or ".mzXML"
+lcmspattern <- ".mzXML" # String: ".mzML" or ".mzXML"
 mzMLfile <- list.files(pattern = lcmspattern, mzmldir)
 
 # specify whether ues a customized feature table
