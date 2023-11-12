@@ -1,11 +1,10 @@
 #----------------- Set parameters -------------------
 # load library
 library(ChloroDBPFinder)
-library(ISFrag)
 
 # specify the path of models
-binary_model_file <- "C:/Users/User/Tingting/2022-11-03-Cl_project/ChloroDBP Hunter/06-02/binary_with_noise_ntree_500_mtry_3.rds"
-multi_model_file <- "C:/Users/User/Tingting/2022-11-03-Cl_project/ChloroDBP Hunter/06-02/multi_with_noise_ntree_500_mtry_5.rds"
+binary_model_file <- "C:/Users/User/Tingting/binary_model.rds"
+multi_model_file <- "C:/Users/User/Tingting/multiclass_model.rds"
 
 # specify the path of raw lcms data
 mzmldir <- "C:/Users/User/Desktop/testmzML"
@@ -20,13 +19,13 @@ use_customized_table <- FALSE
 customized_table <- 'C:/Users/User/Desktop/my_customized_feature_table.csv' 
 
 # specify whether detect in-source fragments
-isfrag <- TRUE # Boolean: TRUE or FALSE
+isfrag <- FALSE # Boolean: TRUE or FALSE
 
 # specify the path of the MS/MS spectra database, if users want to database search for compound annotation
-Cl_db_path <- "C:/Users/User/Tingting/2022-11-03-Cl_project/ChloroDBP Hunter/06-02/Cl_compounds_in_NIST.csv"
+Cl_db_path <- "C:/Users/User/Tingting/Cl_compounds_in_NIST.csv"
 
 # specify the path of the reference table
-ref_path <- "C:/Users/User/Tingting/2022-11-03-Cl_project/ChloroDBP Hunter/06-02/reference_table.csv"
+ref_path <- "C:/Users/User/Tingting//reference_table.csv"
 
 #---------------- Main program ---------------------------------
 ### --------- 1. extraction of Cl-containing features ----------
@@ -50,6 +49,7 @@ for(i in 1:length(mzMLfile)){
   
   # identify in source fragment based on ISFrag package
   if(isfrag){
+    library(ISFrag)
     customFT <- cl_tb
     customFT$Adduct <- 0
     customFT$isotope <- 0
