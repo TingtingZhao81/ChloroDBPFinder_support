@@ -29,7 +29,8 @@ ref_path <- "C:/Users/User/Tingting//reference_table.csv"
 
 #---------------- Main program ---------------------------------
 ### --------- 1. extraction of Cl-containing features ----------
-
+binary_rf_model <- readRDS(binary_model_file)
+multi_rf_model <- readRDS(multi_model_file)
 for(i in 1:length(mzMLfile)){
   
   # load customized table or extract chemical features
@@ -41,8 +42,7 @@ for(i in 1:length(mzMLfile)){
   }
   
   # determine chlorinated compounds
-  binary_rf_model <- readRDS(binary_model_file)
-  multi_rf_model <- readRDS(multi_model_file)
+
   xcmsrawlcms <- eicRawlcms(mzMLdirectory = mzmldir, mzMLfile = mzMLfile[i])
   cl_tb <- selectCl(mzMLdirectory = mzmldir, mzMLfile = mzMLfile[i], original_ft = peaks,
                     binary_model = binary_rf_model, multi_model = multi_rf_model)
