@@ -24,7 +24,8 @@ isfrag <- FALSE # Boolean: TRUE or FALSE
 # specify the path of the MS/MS spectra database, if users want to database search for compound annotation
 Cl_db_path <- "C:/Users/User/Tingting/Cl_compounds_in_NIST.csv"
 
-# specify the path of the reference table
+# specify the path of the reference table containing the known compounds or precursors, 
+# if users want to construct a molecular networking
 ref_path <- "C:/Users/User/Tingting//reference_table.csv"
 
 #---------------- Main program ---------------------------------
@@ -103,7 +104,7 @@ write.csv(filled_tb, paste0(mzmldir, "/gap_filled.csv"), row.names = FALSE )
 ###------------- 4. annotation -------------------------------
 #### ----------- 4.1 Spectral database search ------------------------
 # pls remember to specify the path of feature table that need annotation
-# users need to manual change the path within read.csc() function below
+# users need to manually change the path within read.csv() function below
 table_need_annotation <- read.csv("C:/Users/User/Desktop/testmzML/TW APM noAscorbic_159_cl_high_quality.csv")
 
 # Load database
