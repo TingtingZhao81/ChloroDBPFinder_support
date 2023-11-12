@@ -8,10 +8,10 @@ binary_model_file <- "C:/Users/User/Tingting/2022-11-03-Cl_project/ChloroDBP Hun
 multi_model_file <- "C:/Users/User/Tingting/2022-11-03-Cl_project/ChloroDBP Hunter/06-02/multi_with_noise_ntree_500_mtry_5.rds"
 
 # specify the path of raw lcms data
-mzmldir <- "C:/Users/User/Desktop/testmzXML"
+mzmldir <- "C:/Users/User/Desktop/testmzML"
 
 # specify the format of the raw lcms data
-lcmspattern <- ".mzXML" # String: ".mzML" or ".mzXML"
+lcmspattern <- ".mzML" # String: ".mzML" or ".mzXML"
 mzMLfile <- list.files(pattern = lcmspattern, mzmldir)
 
 # specify whether ues a customized feature table
@@ -102,10 +102,15 @@ write.csv(filled_tb, paste0(mzmldir, "/gap_filled.csv"), row.names = FALSE )
 
 ###------------- 4. annotation -------------------------------
 #### ----------- 4.1 Spectral database search ------------------------
+# pls remember to specify the path of feature table that need annotation
+# users need to manual change the path within read.csc() function below
+table_need_annotation <- read.csv("C:/Users/User/Desktop/testmzML/TW APM noAscorbic_159_cl_high_quality.csv")
+
 # Load database
 Cl_db <-  read.csv(Cl_db_path)
+
 # Compound annotation by spectral database searching
-annotated_tb <- annonateFeature(featureTable = filled_tb, Cl_db, ion_mode = "P", ref_mz_tol =25, dp_score = 70, dp_num = 2)
+annotated_tb <- annonateFeature(featureTable = table_need_annotation, Cl_db, ion_mode = "P", ref_mz_tol =25, dp_score = 70, dp_num = 2)
 # Output annotations
 write.csv(annotated_tb, paste0(mzmldir, "/", nrow(annotated_tb[annotated_tb$score!=0,]),"_annotations.csv"), row.names = FALSE)
 
@@ -129,4 +134,3 @@ write.csv(all_nw, paste0(mzmldir, "/molecular_networks.csv"), row.names = FALSE)
 # Output network with explainable connections which have high spectral connection and reaction pathway connection
 integrated_nw <- network[[2]]
 write.csv(integrated_nw, paste0(mzmldir, "/integrated_molecular_network.csv"), row.names = FALSE)
-
