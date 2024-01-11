@@ -3,11 +3,11 @@
 library(ChloroDBPFinder)
 
 # specify the path of models
-binary_model_file <- "C:/Users/User/Tingting/binary_model.rds"
-multi_model_file <- "C:/Users/User/Tingting/multiclass_model.rds"
+binary_model_file <- "C:/Users/User/Desktop/R_packages_development/ChloroDBPFinder_support/machine_learning_model/binary_model.rds"
+multi_model_file <- "C:/Users/User/Desktop/R_packages_development/ChloroDBPFinder_support/machine_learning_model/multiclass_model.rds"
 
 # specify the path of raw lcms data
-mzmldir <- "C:/Users/User/Desktop/testmzML"
+mzmldir <- "C:/Users/User/Desktop/package_devolopment_notes/tutorial script version"
 
 # specify the format of the raw lcms data
 lcmspattern <- ".mzXML" # String: ".mzML" or ".mzXML"
@@ -22,7 +22,7 @@ customized_table <- 'C:/Users/User/Desktop/my_customized_feature_table.csv'
 isfrag <- FALSE # Boolean: TRUE or FALSE
 
 # specify the path of the MS/MS spectra database, if users want to database search for compound annotation
-Cl_db_path <- "C:/Users/User/Tingting/Cl_compounds_in_NIST.csv"
+Cl_db_path <- "C:/Users/User/Tingting/2022-11-03-Cl_project/ChloroDBP Hunter/06-02/Cl_compounds_in_NIST.csv"
 
 # specify the path of the reference table containing the known compounds or precursors, 
 # if users want to construct a molecular networking
@@ -38,15 +38,19 @@ for(i in 1:length(mzMLfile)){
   if(use_customized_table){
     peaks <- read.csv(customized_table)
   }else{
-    peaks <- extractPeak(mzMLdirectory = mzmldir, mzMLfile = mzMLfile[i] )
+    peaks <- extractPeak(mzMLdirectory = mzmldir, mzMLfile = mzMLfile[i],
+                         SN= 20, noise =2000, rt_min =300, rt_max =3000)
     write.csv(peaks, paste0(mzmldir,"/",strsplit(mzMLfile[i], split = lcmspattern)[[1]][1], "_",nrow(peaks), "_peaks_with_MS2.csv"),row.names = FALSE )
   }
   
   # determine chlorinated compounds
-
+  
   xcmsrawlcms <- eicRawlcms(mzMLdirectory = mzmldir, mzMLfile = mzMLfile[i])
   cl_tb <- selectCl(mzMLdirectory = mzmldir, mzMLfile = mzMLfile[i], original_ft = peaks,
-                    binary_model = binary_rf_model, multi_model = multi_rf_model)
+                    binary_model = binary_rf_model, multi_model = multi_rf_model,
+                    ms1_spetra_rt_tol =20, ms1_spectra_mass_tol = 25, 
+                    iso_mass_diff_1 = 1.003355, iso_mass_diff_2 = 1.99705, 
+                    iso_mass_diff_3 = 3, iso_mass_diff_4 = 3.994)
   
   # identify in source fragment based on ISFrag package
   if(isfrag){
